@@ -5,8 +5,8 @@
  * @project : HomeWork 1
  * @date : 28.11.2021
  * @comments : Класс описания полосы препяствий. Содержит внутренний класс
- * Trail, описывающий препятствие. А также пересление, описываюшие состояние
- * прохождения препятвия.
+ *             Trail, описывающий препятствие. А также пересление, описываюшие
+ *             состояние прохождения препятcвия.
  *
  */
 
@@ -66,6 +66,10 @@ public class Course {
         }
     }
 
+    public void printCourse(){
+        System.out.println("Полоса : "+Arrays.toString(this.trialArray));
+    }
+
     // простейшие тесты работоспособности полученного класса.
     public static void main(String[] args) {
         // тест создания случайной полосы препятствий
@@ -82,6 +86,33 @@ public class Course {
         [Испытание (17), Испытание (10), Испытание (7), Испытание (4), Испытание (20), Испытание (18), Испытание (11), Испытание (13), Испытание (14), Испытание (18)]
         */
 
+    }
+
+    public void doIt(Team team){
+        // обработка прохождения командой полосы
+        Team.Warrior warrior;
+        Trial trial;
+        for (int i = 0; i < 4; i += 1) { // цикл по участникам
+            warrior = team.getWarrior(i);
+            for (int j = 0; j<10; j+=1){ // цикл по препятствиям
+                trial = this.trialArray[j];
+                if (warrior.getEndurance()>=trial.getEndurance()) {
+                    // он прошел препятсвие…
+                    if (j==9) {
+                        warrior.setResult(Team.Results.IS_WIN);
+                    } else {
+                        warrior.setResult(Team.Results.RUNING);
+                    }
+                    // вычесть выносливость
+                    warrior.decreaseEndurance(trial.getEndurance());
+                } else {
+                    // он не прошел препятсвие…
+                    warrior.setResult(Team.Results.IS_FAILED);
+                    break;
+                }
+
+            }
+        }
     }
 
 }

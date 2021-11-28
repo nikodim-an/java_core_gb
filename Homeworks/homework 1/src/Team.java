@@ -5,7 +5,7 @@
  * @project : HomeWork 1
  * @date : 28.11.2021
  * @comments : Класс описания команды. Содержит внутренний класс - Warrior,
- * описывающий члена команды.
+ *             описывающий члена команды.
  *
  */
 
@@ -50,7 +50,6 @@ public class Team {
         }
 
         public void decreaseEndurance(int i) {
-            System.out.println("вычитаю "+i);
             this.endurance =this.endurance-i;
         }
 
@@ -78,9 +77,9 @@ public class Team {
 
     public void printTeamInfo() {
         // вывод информации по всему подразделению
-        System.out.println("Сводная информация по команде:");
+        System.out.println("Сводная информация по команде "+this.name+":");
         for (int i = 0; i < 4; i += 1) {
-            System.out.println("Участник №"+(i+1)+" ("+ warriorArray[i]+" "+ warriorArray[i].result+")");
+            System.out.println("   Участник №"+(i+1)+" ("+ warriorArray[i]+" "+ warriorArray[i].result+")");
         }
     }
 
@@ -89,9 +88,13 @@ public class Team {
         System.out.println("Информация по победителям:");
         for (int i = 0; i < 4; i += 1) {
             if (warriorArray[i].result==Results.IS_WIN) {
-                System.out.println("Участник №"+(i+1)+" "+ warriorArray[i]);
+                System.out.println("   Участник №"+(i+1)+" "+ warriorArray[i]);
             }
         }
+    }
+
+    public Warrior getWarrior(int i){
+        return this.warriorArray[i];
     }
 
     // тесты работоспособности полученного класса
