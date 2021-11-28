@@ -18,5 +18,43 @@ public class Team {
     // это не помешало бы вынести в константы, но
     // тогда это будет единственная константа…
 
+    protected class Warrior {
+        private int endurance;
+        private Results result;
+
+        public Warrior(int endurance, int power, int health, int duration) {
+            // заказной участник
+            this.endurance = endurance;
+            this.result = Results.ON_START;
+        }
+
+        public Warrior() {
+            // случайный участник
+            Random random = new Random();
+            this.endurance = random.nextInt(150); // чтобы некоторые не прошли
+            this.result = Results.ON_START;
+        }
+
+        // вывод параметров участника
+        @Override
+        public String toString() {
+            return "Выносливость - " + endurance;
+        }
+
+        public void setResult(Results result) {
+            this.result = result;
+        }
+
+        public int getEndurance() {
+            return endurance;
+        }
+
+        public void decreaseEndurance(int i) {
+            System.out.println("вычитаю "+i);
+            this.endurance =this.endurance-i;
+        }
+
+    }
+
 
 }
