@@ -9,6 +9,14 @@
  *
  */
 
+import java.util.Arrays;
+import java.util.Random;
 
 public class Team {
+
+    enum Results {ON_START, RUNING, IS_WIN, IS_FAILED}
+    // это не помешало бы вынести в константы, но
+    // тогда это будет единственная константа…
+
+
 }
