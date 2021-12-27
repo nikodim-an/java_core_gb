@@ -1,4 +1,5 @@
 .idea
+target
 META-INF
 *.class
 stend.*
